@@ -3,7 +3,7 @@
 Site da disciplina **Administração de Recursos Computacionais** (Gestão da Tecnologia da Informação,
 4º semestre, matutino) da Faculdade de Tecnologia e Inovação Senac DF, com a Profa. Maristela (Stela).
 
-**No ar:** https://maristelaoliveira.github.io/arc/
+**No ar:** https://maristelaoliveira.github.io/adm-recursos/
 
 ## O que tem aqui
 
