@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Administração de Recursos Computacionais · Profa. Maristela · Senac DF</title>
+  <desc id="descricao">Banner escuro em verde de placa de circuito: o título da disciplina à esquerda, trilhas de cobre com LEDs e, à direita, um terminal com o comando systemctl status mostrando o semestre ativo e os serviços de rede, usuários, e-mail, LDAP, SNMP e Samba funcionando.</desc>
+
+  <defs>
+    <clipPath id="cantos">
+      <rect width="1200" height="360" rx="24"/>
+    </clipPath>
+
+    <!-- Brilhos do fundo: verde à esquerda, cobre à direita -->
+    <radialGradient id="brilhoVerde" cx="10%" cy="20%" r="65%">
+      <stop offset="0" stop-color="#39FF9E" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#39FF9E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="brilhoCobre" cx="95%" cy="110%" r="60%">
+      <stop offset="0" stop-color="#E8A33D" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#E8A33D" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="brilho" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="halo"/>
+      <feMerge>
+        <feMergeNode in="halo"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Furinhos da placa -->
+    <pattern id="furos" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1.2" fill="#1C4A36"/>
+    </pattern>
+
+    <style>
+      .titulo { font: 700 46px "Segoe UI", Arial, "Helvetica Neue", sans-serif; fill: #FFFFFF; }
+      .olho   { font: 700 16px Consolas, "Courier New", monospace; fill: #39FF9E; letter-spacing: 2px; }
+      .mono   { font: 400 17px Consolas, "Courier New", monospace; fill: #D7F5E6; white-space: pre; }
+      .assina { font: 400 19px Consolas, "Courier New", monospace; fill: #E8A33D; }
+      .prompt { fill: #39FF9E; }
+      .suave  { fill: #7FA894; }
+      .ok     { fill: #39FF9E; }
+      .cobre  { fill: #E8A33D; }
+      .cursor { animation: pisca 1s steps(1) infinite; }
+      @keyframes pisca { 50% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#cantos)">
+    <!-- Fundo da placa -->
+    <rect width="1200" height="360" fill="#06140F"/>
+    <rect width="1200" height="360" fill="url(#furos)"/>
+    <rect width="1200" height="360" fill="url(#brilhoVerde)"/>
+    <rect width="1200" height="360" fill="url(#brilhoCobre)"/>
+
+    <!-- Trilhas de cobre -->
+    <g fill="none" stroke="#2E7D57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7">
+      <path d="M0 300 H120 L150 270 H330 L360 300 H640"/>
+      <path d="M0 330 H210 L235 305 H420"/>
+      <path d="M40 0 V30 L70 60 H250"/>
+      <path d="M620 0 V40 L650 70"/>
+      <path d="M560 360 V330 L590 300 H650"/>
+      <path d="M1200 20 H1170"/>
+    </g>
+    <g fill="#06140F" stroke="#E8A33D" stroke-width="3">
+      <circle cx="640" cy="300" r="6"/>
+      <circle cx="420" cy="305" r="6"/>
+      <circle cx="250" cy="60"  r="6"/>
+      <circle cx="650" cy="70"  r="6"/>
+    </g>
+
+    <!-- Um chip de enfeite -->
+    <g transform="translate(470 276)">
+      <rect width="70" height="44" rx="4" fill="#0E2A1F" stroke="#2E7D57" stroke-width="2"/>
+      <g stroke="#7FA894" stroke-width="2">
+        <line x1="12" y1="0" x2="12" y2="-8"/><line x1="26" y1="0" x2="26" y2="-8"/><line x1="40" y1="0" x2="40" y2="-8"/><line x1="54" y1="0" x2="54" y2="-8"/>
+        <line x1="12" y1="44" x2="12" y2="52"/><line x1="26" y1="44" x2="26" y2="52"/><line x1="40" y1="44" x2="40" y2="52"/><line x1="54" y1="44" x2="54" y2="52"/>
+      </g>
+      <text x="35" y="28" text-anchor="middle" style="font: 700 14px Consolas, 'Courier New', monospace; fill: #7FA894">ARC</text>
+    </g>
+
+    <!-- Título -->
+    <text x="60" y="96" class="olho">SENAC DF · GTI · 4º SEMESTRE</text>
+    <text x="58" y="158" class="titulo" textLength="393" lengthAdjust="spacingAndGlyphs">Administração de</text>
+    <text x="58" y="218" class="titulo" textLength="580" lengthAdjust="spacingAndGlyphs">Recursos Computacionais</text>
+    <text x="60" y="258" class="assina">&gt; Profa. Maristela_ · bastidores da TI</text>
+
+    <!-- LEDs de status -->
+    <g filter="url(#brilho)">
+      <circle cx="66"  cy="56" r="6" fill="#39FF9E"/>
+      <circle cx="88"  cy="56" r="6" fill="#39FF9E"/>
+      <circle cx="110" cy="56" r="6" fill="#E8A33D"/>
+    </g>
+
+    <!-- Terminal -->
+    <g transform="translate(690 52)">
+      <rect width="460" height="256" rx="12" fill="#030B08" fill-opacity=".94" stroke="#2E7D57" stroke-width="1.5"/>
+      <rect width="460" height="34" rx="12" fill="#0E2A1F"/>
+      <rect y="22" width="460" height="12" fill="#0E2A1F"/>
+      <circle cx="22" cy="17" r="6" fill="#FF5F57"/>
+      <circle cx="42" cy="17" r="6" fill="#FEBC2E"/>
+      <circle cx="62" cy="17" r="6" fill="#28C840"/>
+      <text x="230" y="22" text-anchor="middle" style="font: 400 14px Consolas, 'Courier New', monospace; fill: #7FA894">servidor — bash</text>
+
+      <text x="20" y="66" class="mono"><tspan class="prompt">stela@arc:~$</tspan> systemctl status semestre</text>
+      <text x="20" y="96" class="mono"><tspan class="ok">●</tspan> semestre.service · ARC 2026.2</text>
+      <text x="20" y="122" class="mono">  Active: <tspan class="ok">active (running)</tspan></text>
+      <text x="20" y="152" class="mono">  rede <tspan class="ok">✓</tspan>   usuarios <tspan class="ok">✓</tspan>   email <tspan class="ok">✓</tspan></text>
+      <text x="20" y="178" class="mono">  ldap <tspan class="ok">✓</tspan>   snmp     <tspan class="ok">✓</tspan>   samba <tspan class="ok">✓</tspan></text>
+      <text x="20" y="208" class="mono suave">  # ninguém percebeu: deu tudo certo</text>
+      <text x="20" y="236" class="mono"><tspan class="prompt">stela@arc:~$</tspan> <tspan class="cursor ok">█</tspan></text>
+    </g>
+  </g>
+</svg>
