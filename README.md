@@ -140,7 +140,7 @@ Curto-circuito? **Lê o log**: ele conta o que aconteceu, na ordem. 🔍
 | 🪟 **Windows** e **Microsoft Learn** | O lado Windows: Active Directory, Entra ID e políticas de grupo. |
 | 📦 **VirtualBox** | As máquinas virtuais Linux e Windows, sem medo de quebrar nada. |
 | 🎓 **NetAcad · Fundamentos de Redes** | A trilha a distância da disciplina, com checkpoints, laboratórios e certificado. |
-| 🐙 **GitHub** | A documentação do projeto final. |
+| <img src="https://maristelaoliveira.github.io/assets/img/octocat-stela.webp" width="22" height="22" alt="Octocat da Stela" align="absmiddle"> **GitHub** | A documentação do projeto final. |
 | 📝 **Moodle** | Onde você entrega os roteiros de laboratório. |
 | 💬 **Teams, Loop e Whiteboard** | Combinar, tirar dúvida e trabalhar junto. |
 
