@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=2">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=7">
 </head>
 <body>
 
@@ -121,6 +122,36 @@
               <p>Em números: r=4, w=2, x=1. <code>750</code> é tudo para o dono, ler e executar para o grupo, nada para os outros.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span>sudo chown ana:financeiro relatorio.xlsx</span><span class="linha"><span class="num">2</span>sudo chmod 640 relatorio.xlsx</span><span class="linha"><span class="num">3</span>ls -l relatorio.xlsx</span><span class="linha"><span class="num">4</span><span class="com"># -rw-r----- ana financeiro</span></span></code></pre>
+          </div>
+
+          <!-- painel de permissões (assets/js/interativos.js): nove chaves r w x viram o chmod -->
+          <div class="cartao perm" data-permissoes>
+            <div class="perm-topo">
+              <span class="olho">Simulador · chmod</span>
+              <h3>O chmod é o chaveiro do prédio</h3>
+              <p>Cada arquivo é uma sala, e cada pessoa recebe chaves: 👀 <b>r</b> para olhar (vale 4), ✏️ <b>w</b> para mexer (vale 2) e ▶️ <b>x</b> para usar ou entrar (vale 1). A dona, a equipe e os visitantes recebem chaves diferentes, e as três somas formam o número do <code>chmod</code>. Veja na hora quem entra na sala.</p>
+            </div>
+
+            <div class="perm-desafios" role="group" aria-label="Desafios"></div>
+            <div class="perm-missao" aria-live="polite"></div>
+
+            <div class="perm-painel"></div>
+
+            <div class="perm-numero">
+              <label for="perm-numero">Ou digite o número:</label>
+              <input id="perm-numero" type="text" inputmode="numeric" maxlength="3" autocomplete="off" spellcheck="false">
+            </div>
+
+            <pre class="codigo perm-terminal"><code></code></pre>
+
+            <div class="perm-sala" aria-live="polite"></div>
+            <div class="perm-quem" aria-label="Quem consegue o quê"></div>
+            <p class="perm-alerta" aria-live="polite"></p>
+
+            <div class="perm-rodape">
+              <button type="button" class="botao contorno" data-perm-recomecar>Recomeçar o desafio</button>
+              <button type="button" class="botao" data-perm-proximo hidden>Próximo desafio →</button>
+            </div>
           </div>
 
           <div class="conceito" style="grid-template-columns:1fr">
@@ -274,5 +305,6 @@
   <script src="../assets/js/conta.js?v=5" data-disciplina="adm-recursos"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=7"></script>
 </body>
 </html>

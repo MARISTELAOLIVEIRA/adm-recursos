@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=2">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=7">
 </head>
 <body>
 
@@ -130,6 +131,67 @@
               <p class="dica"><strong>Dica:</strong> o Copilot ajuda a entender uma linha de log estranha, mas a hipótese só vale depois de testada no laboratório.</p>
             </div>
             
+          </div>
+          <!-- detetive do log (assets/js/interativos.js): Postfix e Dovecot lado a lado com os Correios -->
+          <div class="cartao detetive" data-detetive>
+            <div class="detetive-topo">
+              <span class="olho">Simulador · detetive do log</span>
+              <h3>O e-mail é uma carta. O servidor é o Correio.</h3>
+              <p>A gerente da Logística Rápida manda cartas. Acompanhe o envelope: o <strong>Postfix</strong> é a agência que recebe e despacha, o <strong>Dovecot</strong> é a portaria do prédio que guarda nas caixinhas, e o <strong>log</strong> é o rastreamento da encomenda. Empresa e domínios fictícios.</p>
+            </div>
+
+            <ol class="contas-missoes detetive-missoes" aria-label="Missões do detetive">
+              <li><span>Mande para a <strong>ana</strong> e clique na linha do log que prova que ela recebeu.</span></li>
+              <li><span>O caso: mande para o <strong>diretor</strong> e clique na linha que explica por que não chegou.</span></li>
+              <li><span>Resolva o caso e mande de novo: agora tem que chegar.</span></li>
+              <li><span>Mande para o <strong>fornecedor</strong>, que está fechado. O que o Postfix faz? Depois, abra o fornecedor.</span></li>
+            </ol>
+
+            <!-- a cena é desenhada pelo interativos.js: deitada no computador, em pé no celular -->
+            <div class="vr-palco detetive-palco" role="img" aria-label="A gerente, o Postfix (a agência dos Correios), o Dovecot (a portaria do prédio), as caixas da ana e do carlos e o servidor do fornecedor (a agência de outra cidade)."></div>
+
+            <div class="detetive-envio">
+              <p class="dora-pergunta" id="detetive-pergunta">A gerente manda o relatório para:</p>
+              <div class="detetive-botoes" role="group" aria-labelledby="detetive-pergunta">
+                <button type="button" data-para="ana"><span aria-hidden="true">👩</span> ana@logistica.local</button>
+                <button type="button" data-para="diretor"><span aria-hidden="true">👔</span> diretor@logistica.local</button>
+                <button type="button" data-para="fornecedor"><span aria-hidden="true">🏭</span> compras@fornecedor.example</button>
+              </div>
+            </div>
+
+            <div class="janela detetive-terminal">
+              <div class="janela-barra">
+                <span class="semaforo" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="janela-titulo">sudo tail -f /var/log/mail.log</span>
+              </div>
+              <div class="janela-corpo">
+                <label class="detetive-traduz"><input type="checkbox" checked> <span>📦 Mostrar a tradução do rastreamento</span></label>
+                <div class="detetive-log com-traducao" role="log" aria-label="O log do servidor de e-mail">
+                  <p class="detetive-vazio">O log está esperando. Mande uma carta.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="detetive-explica" aria-live="polite">
+              <p><b>Clique numa linha do log</b> e eu explico o que ela diz no servidor e na vida real.</p>
+            </div>
+
+            <div class="detetive-solucao" hidden>
+              <h4>Como resolver o caso?</h4>
+              <div class="detetive-botoes">
+                <button type="button" data-solucao="reenviar"><span aria-hidden="true">🔁</span> Pedir para a gerente mandar de novo</button>
+                <button type="button" data-solucao="reiniciar"><span aria-hidden="true">🔌</span> Reiniciar o Postfix</button>
+                <button type="button" data-solucao="apelido"><span aria-hidden="true">🏷️</span> Criar o apelido diretor → carlos</button>
+              </div>
+            </div>
+
+            <p class="dora-retorno detetive-retorno" aria-live="polite"></p>
+
+            <div class="contas-rodape">
+              <p class="contas-placar detetive-placar" aria-live="polite">0 de 4 missões</p>
+              <button type="button" class="botao contorno" data-detetive-ligar hidden>🔓 Abrir o fornecedor</button>
+              <button type="button" class="botao contorno" data-detetive-recomecar>Recomeçar</button>
+            </div>
           </div>
         </section>
 
@@ -265,5 +327,6 @@
   <script src="../assets/js/conta.js?v=5" data-disciplina="adm-recursos"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=7"></script>
 </body>
 </html>

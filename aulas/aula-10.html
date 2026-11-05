@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=2">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=7">
 </head>
 <body>
 
@@ -139,6 +140,54 @@
               <p>Três registros de DNS que provam que o e-mail veio mesmo do domínio. Sem eles, a mensagem tem grande chance de cair no spam (ou ser recusada).</p>
             </div>
             
+          </div>
+
+          <!-- viagem do e-mail (assets/js/interativos.js): SMTP, MX, SPF/DKIM/DMARC e IMAP x POP3 -->
+          <div class="cartao mail" data-email>
+            <div class="mail-topo">
+              <span class="olho">Simulador · a viagem do e-mail</span>
+              <h3>O e-mail é uma carta. Ela chega na caixinha da Maria?</h3>
+              <p>A escola manda o boletim para 6.000 famílias de uma vez. Uma delas é a Maria. Acompanhe a carta: a <strong>agência</strong> (SMTP) despacha, o <strong>guia de CEPs</strong> (DNS) diz o endereço e o <strong>porteiro</strong> do prédio dela confere se a carta é mesmo da escola. Domínios fictícios.</p>
+            </div>
+
+            <!-- a cena é desenhada pelo interativos.js: deitada no computador, em pé no celular -->
+            <div class="vr-palco mail-palco" role="img" aria-label="A secretaria, o SMTP da escola (a agência que despacha), o DNS (o guia de CEPs), o servidor da Maria (a portaria do prédio dela), o celular e o computador da Maria. No modo golpe, um golpista com remetente falso."></div>
+
+            <div class="mail-controles">
+              <fieldset class="mail-grupo">
+                <legend>Quem envia?</legend>
+                <label><input type="radio" name="mail-quem" value="escola" checked> <span>✍️ A secretaria da escola</span></label>
+                <label><input type="radio" name="mail-quem" value="golpe"> <span>🦹 Um golpista fingindo ser a escola</span></label>
+              </fieldset>
+              <fieldset class="mail-grupo">
+                <legend>O DNS de escola.com.br tem:</legend>
+                <label><input type="checkbox" data-registro="spf"> <span>📋 <b>SPF</b>: quais servidores podem mandar e-mail pela escola <em>(a lista de carteiros autorizados)</em></span></label>
+                <label><input type="checkbox" data-registro="dkim"> <span>🔏 <b>DKIM</b>: a assinatura digital das mensagens <em>(o lacre com a assinatura)</em></span></label>
+                <label><input type="checkbox" data-registro="dmarc"> <span>👮 <b>DMARC</b>: o que fazer com quem falhar, aqui: recusar <em>(a ordem para o porteiro)</em></span></label>
+              </fieldset>
+            </div>
+
+            <div class="mail-acoes">
+              <button type="button" class="botao" data-mail-enviar>Enviar o boletim</button>
+            </div>
+
+            <ol class="mail-diario" aria-live="polite"></ol>
+            <p class="mail-resultado" aria-live="polite"></p>
+
+            <div class="mail-leitura" hidden>
+              <h4>Agora a Maria lê o boletim</h4>
+              <p>Escolha como os aparelhos dela buscam a carta e abra nos dois. <strong>IMAP</strong> é olhar a carta na portaria; <strong>POP3</strong> é retirar a carta e levar embora.</p>
+              <div class="mail-protocolo" role="group" aria-label="Protocolo de leitura">
+                <button type="button" data-protocolo="imap" aria-pressed="true">IMAP <small>porta 993</small></button>
+                <button type="button" data-protocolo="pop3" aria-pressed="false">POP3 <small>porta 995</small></button>
+              </div>
+              <div class="mail-caixas">
+                <div class="mail-caixa" data-caixa="maria"><b>Servidor</b><span></span></div>
+                <div class="mail-caixa" data-caixa="celular"><b>Celular</b><span></span><button type="button" data-abrir="celular">Abrir no celular</button></div>
+                <div class="mail-caixa" data-caixa="pc"><b>Computador</b><span></span><button type="button" data-abrir="pc">Abrir no computador</button></div>
+              </div>
+              <p class="mail-leitura-dica" aria-live="polite"></p>
+            </div>
           </div>
         </section>
 
@@ -280,5 +329,6 @@
   <script src="../assets/js/conta.js?v=5" data-disciplina="adm-recursos"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=7"></script>
 </body>
 </html>

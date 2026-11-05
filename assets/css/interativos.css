@@ -1,0 +1,2132 @@
+/*
+  interativos.css: os simuladores das aulas de ARC (só deste site, não copie para os outros).
+  versão 7 · 2026-11-05 · Todos com analogia do dia a dia: hotel (5), prédio e crachás (6), chaveiro (7), carta (10) e Correios (11).
+  Carregue depois do neon.css: as cores vêm do --neon (cliente) e do --neon-2 (servidor).
+*/
+
+:root {
+  --intruso: #ff8a5c;
+  --intruso-brilho: rgba(255, 138, 92, .45);
+}
+
+[data-tema="claro"] {
+  --intruso: #c2410c;
+  --intruso-brilho: rgba(194, 65, 12, .2);
+}
+
+
+/* ===================== caixa do simulador ===================== */
+.dora {
+  margin-top: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.dora-topo h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.25rem;
+}
+
+.dora-topo p {
+  color: var(--texto-2);
+}
+
+/* a eletricidade correndo nas trilhas das cenas */
+@keyframes dora-corre {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+
+/* ===================== as quatro letras: D O R A ===================== */
+.dora-letras {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .5rem;
+  margin: .6rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dora-letras li {
+  display: grid;
+  justify-items: center;
+  gap: .1rem;
+  padding: .5rem .3rem;
+  border: 1px dashed var(--borda-forte);
+  border-radius: var(--raio-p);
+  color: var(--texto-3);
+  font-size: .82rem;
+  text-align: center;
+  transition: border-color .3s, color .3s, background .3s;
+}
+
+.dora-letras b {
+  font-family: var(--f-titulo);
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.dora-letras li.feito {
+  border-style: solid;
+  border-color: var(--neon);
+  color: var(--texto);
+  background: var(--superficie-2);
+}
+
+.dora-letras li.feito b {
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon-brilho);
+}
+
+[data-tema="claro"] .dora-letras li.feito b {
+  text-shadow: none;
+}
+
+
+/* ===================== botões das mensagens ===================== */
+.dora-pergunta {
+  margin-bottom: .5rem;
+  font-weight: 700;
+}
+
+.dora-botoes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .5rem;
+}
+
+.dora-botoes button {
+  display: grid;
+  gap: .1rem;
+  padding: .7rem .5rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-p);
+  background: var(--superficie-2);
+  color: var(--texto);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color .2s, transform .2s var(--suave);
+}
+
+.dora-botoes button small {
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--texto-3);
+}
+
+.dora-botoes button:hover {
+  border-color: var(--neon-2);
+  transform: translateY(-1px);
+}
+
+.dora-botoes button.feito {
+  opacity: .5;
+}
+
+.dora-botoes button.errou {
+  border-color: var(--intruso);
+  animation: dora-treme .4s;
+}
+
+@keyframes dora-treme {
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* resposta ao clique: acerto em verde, erro em coral */
+.dora-retorno {
+  min-height: 1.5em;
+  margin-top: .6rem;
+  font-weight: 700;
+}
+
+.dora-retorno.certo {
+  color: var(--neon);
+}
+
+.dora-retorno.errado {
+  color: var(--intruso);
+}
+
+[data-tema="claro"] .dora-retorno.certo {
+  color: var(--menta);
+}
+
+
+/* ===================== a mensagem e a ficha do notebook ===================== */
+.dora-detalhes {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dora-pacote,
+.dora-ficha {
+  padding: 1rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.dora-pacote p + p {
+  margin-top: .5rem;
+}
+
+.dora-pacote .dora-rota {
+  font-size: .92rem;
+  color: var(--texto-2);
+}
+
+.dora-ficha dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .3rem .8rem;
+  margin: .5rem 0 0;
+  font-size: .92rem;
+}
+
+.dora-ficha dt {
+  color: var(--texto-3);
+}
+
+.dora-ficha dt small {
+  display: block;
+  font-size: .82em;
+  font-style: italic;
+  color: var(--vr-ouro);
+}
+
+.dora-chave em,
+.dora-ficha em {
+  color: var(--vr-ouro);
+}
+
+.dora-pacote .na-vida {
+  color: var(--vr-ouro);
+}
+
+.dora-ficha dd {
+  margin: 0;
+  font-family: var(--f-mono);
+  overflow-wrap: anywhere;
+}
+
+.dora-status {
+  margin-top: .7rem;
+  font-weight: 700;
+}
+
+.dora-status.ok {
+  color: var(--neon);
+}
+
+.dora-status.ruim {
+  color: var(--intruso);
+}
+
+[data-tema="claro"] .dora-status.ok {
+  color: var(--menta);
+}
+
+
+/* ===================== rodapé: roteador do caso, recomeçar e placar ===================== */
+.dora-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem 1rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.dora-chave {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.dora-chave input {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--intruso);
+}
+
+.dora-rodape .botao {
+  padding: .5rem 1.1rem;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.dora-placar {
+  flex-basis: 100%;
+  color: var(--texto-2);
+  font-size: .92rem;
+}
+
+.dora-placar[hidden] {
+  display: none;
+}
+
+
+/* ===================== celular ===================== */
+@media (max-width: 700px) {
+  .dora-botoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dora-detalhes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .dora-letras li span {
+    display: none;
+  }
+}
+
+
+/* =====================================================================
+   Terminal das contas (aula 6): o aluno digita os comandos e vê os
+   grupos, as pastas e os arquivos do Linux mudarem na hora.
+   O terminal é sempre escuro, nos dois temas, como os blocos de código.
+   ===================================================================== */
+.contas {
+  margin-top: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.contas-topo h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.25rem;
+}
+
+.contas-topo p {
+  color: var(--texto-2);
+}
+
+/* missões, com o check que acende */
+.contas-missoes {
+  display: grid;
+  gap: .45rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: missao;
+}
+
+.contas-missoes li {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: .6rem;
+  padding: .55rem .7rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+  transition: border-color .3s;
+}
+
+.contas-missoes li::before {
+  counter-increment: missao;
+  content: counter(missao);
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px dashed var(--borda-forte);
+  border-radius: 50%;
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--texto-3);
+}
+
+.contas-missoes li.feita {
+  border-color: var(--neon);
+}
+
+.contas-missoes li.feita::before {
+  content: "✓";
+  border: 0;
+  background: var(--neon);
+  color: var(--chip);
+  font-weight: 700;
+  box-shadow: 0 0 10px var(--neon-brilho);
+}
+
+.contas-missoes .dica-cmd {
+  display: block;
+  margin-top: .3rem;
+  font-family: var(--f-mono);
+  font-size: .88rem;
+  color: var(--ouro-forte);
+}
+
+.contas-missoes .dica-cmd[hidden] {
+  display: none;
+}
+
+.contas-missoes button {
+  padding: .25rem .7rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto-2);
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+.contas-missoes button:hover {
+  border-color: var(--neon-2);
+  color: var(--texto);
+}
+
+/* terminal e quadro lado a lado */
+.contas-palco {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.contas-terminal .janela-corpo {
+  padding: 0;
+  background: var(--chip);
+}
+
+.contas-saida {
+  height: 19rem;
+  padding: 1rem 1rem .4rem;
+  overflow-y: auto;
+  font-family: var(--f-mono);
+  font-size: .88rem;
+  line-height: 1.6;
+  color: #e9e6dc;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.contas-saida .t-eco {
+  color: #e9e6dc;
+}
+
+.contas-saida .ps,
+.contas-linha .ps {
+  color: #39ff14;
+}
+
+.contas-saida .t-erro {
+  color: #ff8a5c;
+}
+
+.contas-saida .t-dica {
+  color: #ecc874;
+}
+
+.contas-saida .t-vida {
+  color: #ffd27a;
+  font-family: var(--f-texto);
+  font-size: .95rem;
+}
+
+.contas-saida .t-info {
+  color: #8fd3ff;
+}
+
+.contas-linha {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem .9rem;
+  font-family: var(--f-mono);
+  font-size: .88rem;
+}
+
+.contas-linha .ps {
+  flex: none;
+}
+
+.contas-linha input {
+  flex: 1;
+  min-width: 0;
+  padding: .35rem .5rem;
+  border: 1px solid #2a3530;
+  border-radius: 6px;
+  background: #0b110e;
+  color: #e9e6dc;
+  font-family: var(--f-mono);
+  font-size: 1rem;
+  caret-color: #39ff14;
+}
+
+.contas-linha input:focus-visible {
+  outline: 2px solid #39ff14;
+  outline-offset: 1px;
+}
+
+/* o quadro: usuários, grupos e pastas */
+.contas-quadro {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: .9rem;
+  padding: 1rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+  overflow: hidden;
+}
+
+/* a trilha no topo do quadro: um pulso corre a cada comando */
+.contas-quadro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--borda-forte);
+}
+
+.contas-quadro::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon-brilho);
+  opacity: 0;
+}
+
+.contas-quadro.corre::after {
+  animation: contas-pulso .8s var(--suave);
+}
+
+@keyframes contas-pulso {
+  0% {
+    left: -10px;
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 1;
+  }
+}
+
+.contas-quadro h4 {
+  margin: 0 0 .4rem;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--texto-3);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.contas-fichas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  min-height: 1.9rem;
+}
+
+.contas-vazio {
+  color: var(--texto-3);
+  font-size: .9rem;
+}
+
+/* uma pessoa (usuário) ou uma pasta */
+.contas-ficha {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .2rem .6rem .2rem .25rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: var(--superficie);
+  font-size: .88rem;
+}
+
+.contas-ficha i {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--neon-2);
+  color: #fff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+.contas-ficha small {
+  font-family: var(--f-mono);
+  color: var(--texto-3);
+}
+
+.contas-ficha.pasta i {
+  background: var(--ouro);
+}
+
+.contas-ficha.orfa {
+  border-style: dashed;
+  border-color: var(--intruso);
+}
+
+.contas-ficha.orfa i {
+  background: var(--intruso);
+}
+
+/* chegou agora: aparece com brilho */
+.contas-ficha.chega {
+  animation: contas-chega .9s var(--suave);
+}
+
+@keyframes contas-chega {
+  0% {
+    transform: scale(.6);
+    opacity: 0;
+    box-shadow: 0 0 0 0 var(--neon-brilho);
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    box-shadow: 0 0 0 6px var(--neon-brilho);
+  }
+
+  100% {
+    transform: none;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* um grupo é uma caixinha com as pessoas dentro */
+.contas-grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: .5rem;
+}
+
+.contas-grupo {
+  padding: .5rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-p);
+  background: var(--superficie);
+}
+
+/* cada sala com a sua cor */
+.contas-grupo[class*="vr-"] {
+  border-color: var(--c);
+  background: color-mix(in srgb, var(--c) 10%, var(--superficie));
+}
+
+.contas-grupo[class*="vr-"] > b {
+  display: block;
+  color: var(--c);
+}
+
+.contas-grupo[class*="vr-"] > b small {
+  display: block;
+  margin-top: .1rem;
+}
+
+.contas-ficha.cracha i {
+  background: var(--vr-azul);
+}
+
+.contas-quadro h4 small {
+  font-family: var(--f-texto);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.contas-ficha.pasta i {
+  background: transparent;
+  font-size: 1rem;
+}
+
+.contas-grupo.chega {
+  animation: contas-chega .9s var(--suave);
+}
+
+.contas-grupo b {
+  display: flex;
+  justify-content: space-between;
+  gap: .4rem;
+  margin-bottom: .35rem;
+  font-family: var(--f-mono);
+  font-size: .85rem;
+}
+
+.contas-grupo b small {
+  color: var(--texto-3);
+  font-weight: 400;
+}
+
+/* os arquivos de verdade: /etc/passwd, /etc/group e /etc/shadow */
+.contas-arquivos {
+  margin-top: 1rem;
+}
+
+.contas-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .5rem;
+}
+
+.contas-abas button {
+  padding: .3rem .8rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto-2);
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+.contas-abas button[aria-pressed="true"] {
+  border-color: var(--neon-2);
+  background: var(--superficie-2);
+  color: var(--texto);
+}
+
+.contas-arquivo {
+  max-height: 14rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+  font-size: .85rem;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.contas-arquivo .nova {
+  display: inline-block;
+  color: #39ff14;
+  animation: contas-linha 1.6s;
+}
+
+@keyframes contas-linha {
+  0% {
+    background: rgba(57, 255, 20, .25);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+.contas-legenda {
+  margin-top: .4rem;
+  color: var(--texto-3);
+  font-size: .88rem;
+}
+
+.contas-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.contas-placar {
+  font-weight: 700;
+  color: var(--texto-2);
+}
+
+.contas-placar.pronto {
+  color: var(--neon);
+}
+
+[data-tema="claro"] .contas-placar.pronto {
+  color: var(--menta);
+}
+
+.contas-rodape .botao {
+  padding: .5rem 1.1rem;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+/* texto só para leitores de tela */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .contas-palco {
+    grid-template-columns: 1fr;
+  }
+
+  .contas-saida {
+    height: 15rem;
+  }
+}
+
+@media (max-width: 520px) {
+  /* no celular, o prompt encolhe para sobrar espaço para o comando */
+  .contas-linha .ps-longo {
+    display: none;
+  }
+
+  .contas-missoes li {
+    grid-template-columns: 1.7rem minmax(0, 1fr);
+  }
+
+  .contas-missoes li button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+
+/* =====================================================================
+   Painel de permissões (aula 7): nove chaves r w x, como LEDs, viram o
+   número do chmod, a linha do ls -l e quem consegue abrir o arquivo.
+   ===================================================================== */
+.perm {
+  margin-top: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.perm-topo h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.25rem;
+}
+
+.perm-topo p {
+  color: var(--texto-2);
+}
+
+/* os desafios, como abas */
+.perm-desafios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 1rem 0 .6rem;
+}
+
+.perm-desafios button {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .9rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto-2);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.perm-desafios button[aria-pressed="true"] {
+  border-color: var(--neon-2);
+  background: var(--superficie-2);
+  color: var(--texto);
+}
+
+.perm-desafios button.feito::after {
+  content: "✓";
+  color: var(--neon);
+  font-weight: 700;
+}
+
+[data-tema="claro"] .perm-desafios button.feito::after {
+  color: var(--menta);
+}
+
+.perm-missao {
+  padding: .8rem 1rem;
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--neon-2);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.perm-missao p + p {
+  margin-top: .3rem;
+  color: var(--texto-2);
+  font-size: .92rem;
+}
+
+.perm-mostra {
+  padding: .1rem .6rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto-2);
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+/* as nove chaves: dono, grupo e outros */
+.perm-painel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .6rem;
+  margin-top: 1rem;
+}
+
+.perm-coluna {
+  display: grid;
+  justify-items: center;
+  gap: .5rem;
+  padding: .8rem .5rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-p);
+  background: var(--superficie);
+  text-align: center;
+}
+
+.perm-coluna h4 {
+  margin: 0;
+  font-size: .95rem;
+}
+
+.perm-coluna h4 small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--texto-3);
+}
+
+.perm-chaves {
+  display: flex;
+  gap: .4rem;
+}
+
+/* uma chave: um LED redondo com a letra e o valor embaixo */
+.perm-chaves button {
+  display: grid;
+  justify-items: center;
+  gap: .15rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texto-3);
+  font: inherit;
+  cursor: pointer;
+}
+
+.perm-chaves .led {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 2px solid var(--borda-forte);
+  border-radius: 50%;
+  background: var(--fundo-2);
+  font-family: var(--f-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--texto-3);
+  transition: background .25s, border-color .25s, box-shadow .25s, color .25s;
+}
+
+.perm-chaves small {
+  font-family: var(--f-mono);
+  font-size: .75rem;
+}
+
+.perm-chaves button[aria-pressed="true"] .led {
+  border-color: var(--neon);
+  background: var(--neon);
+  color: var(--chip);
+  box-shadow: 0 0 12px var(--neon-brilho), 0 0 2px var(--neon);
+}
+
+[data-tema="claro"] .perm-chaves button[aria-pressed="true"] .led {
+  color: #fff;
+}
+
+.perm-chaves button[aria-pressed="true"] small {
+  color: var(--texto);
+}
+
+.perm-chaves button:hover .led {
+  border-color: var(--neon-2);
+}
+
+/* a soma da coluna: o dígito do chmod e os bits */
+.perm-digito {
+  font-family: var(--f-titulo);
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--neon);
+  text-shadow: 0 0 14px var(--neon-brilho);
+}
+
+[data-tema="claro"] .perm-digito {
+  text-shadow: none;
+}
+
+.perm-digito.muda {
+  animation: perm-muda .5s var(--suave);
+}
+
+@keyframes perm-muda {
+  40% {
+    transform: scale(1.25);
+  }
+}
+
+.perm-conta {
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  color: var(--texto-3);
+}
+
+/* o terminal: chmod e ls -l, sempre escuro */
+.perm-terminal {
+  margin-top: 1rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+  line-height: 1.9;
+}
+
+.perm-terminal .ps {
+  color: #39ff14;
+}
+
+.perm-terminal .bits b {
+  color: #39ff14;
+  font-weight: 500;
+}
+
+.perm-terminal .bits i {
+  color: #4d5a53;
+  font-style: normal;
+}
+
+.perm-numero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .8rem;
+}
+
+.perm-numero input {
+  width: 5.5rem;
+  padding: .4rem .6rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+  font-family: var(--f-mono);
+  font-size: 1.1rem;
+  letter-spacing: .15em;
+  text-align: center;
+}
+
+/* a analogia embaixo do nome de cada coluna */
+.perm-coluna .perm-vida {
+  display: block;
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--vr-ouro);
+}
+
+/* a sala do arquivo, com o carimbo da porta */
+.perm-sala {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .4rem 1rem;
+  margin-top: 1rem;
+  padding: .8rem 1rem;
+  border: 2px solid var(--borda-forte);
+  border-radius: var(--raio);
+  background: var(--fundo-2);
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.perm-sala-emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.perm-sala b {
+  display: block;
+  font-family: var(--f-mono);
+}
+
+.perm-sala div span {
+  color: var(--texto-2);
+  font-size: .9rem;
+}
+
+.perm-carimbo {
+  padding: .3rem .8rem;
+  border: 2px solid var(--texto-3);
+  border-radius: 8px;
+  font-family: var(--f-titulo);
+  font-weight: 900;
+  font-size: .85rem;
+  letter-spacing: .04em;
+  color: var(--texto-3);
+  transform: rotate(-4deg);
+}
+
+.perm-sala.aberta {
+  border-color: var(--intruso);
+}
+
+.perm-sala.aberta .perm-carimbo {
+  border-color: var(--intruso);
+  color: var(--intruso);
+  animation: perm-alarme 1s ease-in-out infinite;
+}
+
+@keyframes perm-alarme {
+  50% {
+    box-shadow: 0 0 14px var(--intruso-brilho);
+  }
+}
+
+.perm-sala.certa {
+  border-color: var(--vr-verde);
+  box-shadow: 0 0 18px -4px var(--vr-verde);
+}
+
+.perm-sala.certa .perm-carimbo {
+  border-color: var(--vr-verde);
+  color: var(--vr-verde);
+  animation: vr-carimba-leve .6s var(--suave);
+}
+
+@keyframes vr-carimba-leve {
+  0% {
+    transform: rotate(-4deg) scale(1.8);
+    opacity: 0;
+  }
+}
+
+.perm-sala .vr-festa {
+  border-radius: var(--raio);
+}
+
+/* as pessoas: avatar, a porta e as chaves de cada uma */
+.perm-pessoa .perm-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c) 18%, var(--superficie));
+  border: 2px solid var(--c);
+  font-size: 1.5rem;
+}
+
+.perm-porta {
+  display: block;
+  margin-top: .15rem;
+  font-size: .85rem;
+  color: var(--texto-2);
+}
+
+/* quem consegue: as pessoas, com a trilha acesa quando a permissão deixa */
+.perm-quem {
+  display: grid;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.perm-pessoa {
+  display: grid;
+  grid-template-columns: auto minmax(9rem, 1fr) minmax(0, 2fr);
+  align-items: center;
+  gap: .6rem 1rem;
+  padding: .6rem .8rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.perm-pessoa b {
+  display: block;
+}
+
+.perm-pessoa b + span {
+  font-size: .85rem;
+  color: var(--texto-3);
+}
+
+.perm-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.perm-acao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .7rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  font-size: .88rem;
+  color: var(--texto-3);
+  overflow: hidden;
+}
+
+.perm-acao::before {
+  content: "🔒";
+  font-size: .8em;
+}
+
+/* liberado: acende, com a eletricidade passando por baixo */
+.perm-acao.pode {
+  border-color: var(--neon);
+  color: var(--texto);
+  background: linear-gradient(90deg, transparent 0 40%, var(--neon-brilho) 50%, transparent 60% 100%) 0 0 / 300% 100%;
+  animation: perm-corre 2.2s linear infinite;
+}
+
+.perm-acao.pode::before {
+  content: "🔑";
+  color: var(--neon);
+}
+
+[data-tema="claro"] .perm-acao.pode::before {
+  color: var(--menta);
+}
+
+@keyframes perm-corre {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* alerta do estudo de caso */
+.perm-alerta {
+  min-height: 1.5em;
+  margin-top: .8rem;
+  font-weight: 700;
+}
+
+.perm-alerta.certo {
+  color: var(--neon);
+}
+
+.perm-alerta.errado {
+  color: var(--intruso);
+}
+
+[data-tema="claro"] .perm-alerta.certo {
+  color: var(--menta);
+}
+
+.perm-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .6rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.perm-rodape .botao {
+  padding: .5rem 1.1rem;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.perm-rodape .botao[hidden] {
+  display: none;
+}
+
+/* no celular, cada coluna vira uma linha: nome, chaves e o dígito */
+@media (max-width: 640px) {
+  .perm-painel {
+    grid-template-columns: 1fr;
+    gap: .45rem;
+  }
+
+  .perm-coluna {
+    grid-template-columns: minmax(0, 1fr) auto 2.2rem;
+    align-items: center;
+    justify-items: start;
+    gap: .6rem;
+    padding: .6rem .8rem;
+    text-align: left;
+  }
+
+  .perm-conta {
+    display: none;
+  }
+
+  .perm-digito {
+    font-size: 2rem;
+    justify-self: end;
+  }
+
+  .perm-chaves .led {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .perm-pessoa {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .perm-pessoa .perm-acoes {
+    grid-column: 1 / -1;
+  }
+
+  .perm-sala {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .perm-carimbo {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+
+/* =====================================================================
+   A viagem do e-mail (aula 10): a carta. O desenho é o das cenas comuns
+   (vr-palco, cenaVR).
+   ===================================================================== */
+.mail {
+  margin-top: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.mail-topo h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.25rem;
+}
+
+.mail-topo p {
+  color: var(--texto-2);
+}
+
+/* controles: quem envia e o DNS da escola */
+.mail-controles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: .8rem;
+  margin-top: .6rem;
+}
+
+.mail-grupo {
+  display: grid;
+  gap: .45rem;
+  margin: 0;
+  padding: .8rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.mail-grupo legend {
+  padding: 0 .3rem;
+  font-weight: 700;
+}
+
+.mail-grupo label {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .95rem;
+  color: var(--texto-2);
+  cursor: pointer;
+}
+
+.mail-grupo input {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: .2rem;
+  accent-color: var(--neon-2);
+}
+
+.mail-grupo b {
+  color: var(--texto);
+}
+
+.mail-grupo em {
+  color: var(--vr-ouro);
+}
+
+/* a tradução para a vida real, embaixo de cada passo */
+.na-vida {
+  display: block;
+  margin-top: .15rem;
+  color: var(--vr-ouro);
+  font-size: .92em;
+}
+
+.mail-checks .na-vida {
+  display: inline;
+  color: var(--texto-3);
+}
+
+.mail-acoes {
+  margin-top: 1rem;
+}
+
+.mail-acoes .botao {
+  cursor: pointer;
+}
+
+.mail-acoes .botao:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+/* o diário da viagem */
+.mail-diario {
+  display: grid;
+  gap: .4rem;
+  margin: 1rem 0 0;
+  padding-left: 1.4rem;
+  color: var(--texto-2);
+}
+
+.mail-diario:empty {
+  display: none;
+}
+
+.mail-diario li::marker {
+  font-family: var(--f-mono);
+  color: var(--neon-2);
+}
+
+.mail-checks {
+  display: grid;
+  gap: .2rem;
+  margin: .3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mail-checks .ok {
+  color: var(--neon);
+}
+
+.mail-checks .falha {
+  color: var(--intruso);
+}
+
+[data-tema="claro"] .mail-checks .ok {
+  color: var(--menta);
+}
+
+.mail-resultado {
+  min-height: 1.5em;
+  margin-top: .8rem;
+  font-weight: 700;
+}
+
+.mail-resultado.certo {
+  color: var(--neon);
+}
+
+.mail-resultado.errado {
+  color: var(--intruso);
+}
+
+[data-tema="claro"] .mail-resultado.certo {
+  color: var(--menta);
+}
+
+/* a leitura: IMAP x POP3 */
+.mail-leitura {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.mail-leitura[hidden] {
+  display: none;
+}
+
+.mail-leitura h4 {
+  margin: 0 0 .3rem;
+  font-size: 1.05rem;
+}
+
+.mail-leitura p {
+  color: var(--texto-2);
+}
+
+.mail-protocolo {
+  display: flex;
+  gap: .4rem;
+  margin: .7rem 0;
+}
+
+.mail-protocolo button,
+.mail-caixa button {
+  padding: .4rem .9rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto-2);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.mail-protocolo button small {
+  font-family: var(--f-mono);
+  color: var(--texto-3);
+}
+
+.mail-protocolo button[aria-pressed="true"] {
+  border-color: var(--neon-2);
+  background: var(--superficie-2);
+  color: var(--texto);
+}
+
+.mail-caixa button:hover,
+.mail-protocolo button:hover {
+  border-color: var(--neon-2);
+}
+
+.mail-caixas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;
+}
+
+.mail-caixa {
+  display: grid;
+  align-content: start;
+  gap: .4rem;
+  padding: .7rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.mail-caixa span {
+  font-size: .9rem;
+  color: var(--texto-2);
+}
+
+.mail-caixa button {
+  justify-self: start;
+}
+
+.mail-leitura-dica {
+  min-height: 1.5em;
+  margin-top: .7rem;
+  font-weight: 700;
+  color: var(--texto) !important;
+}
+
+@media (max-width: 760px) {
+  .mail-controles,
+  .mail-caixas {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================================
+   Detetive do log (aula 11): o e-mail é uma carta, o servidor é o Correio.
+   Cada peça tem a sua cor, o nome técnico e a analogia.
+   ===================================================================== */
+:root {
+  --vr-ouro: #ecc874;
+  --vr-azul: #4fa3ff;
+  --vr-roxo: #b98cff;
+  --vr-verde: #39ff14;
+  --vr-laranja: #ff9f43;
+}
+
+[data-tema="claro"] {
+  --vr-ouro: #8a6614;
+  --vr-azul: #1a6fd1;
+  --vr-roxo: #7a4fd6;
+  --vr-verde: #0a8f4d;
+  --vr-laranja: #c25e00;
+}
+
+.detetive {
+  margin-top: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.detetive-topo h3 {
+  margin: .3rem 0 .4rem;
+  font-size: 1.3rem;
+}
+
+.detetive-topo p {
+  color: var(--texto-2);
+}
+
+.detetive-missoes li {
+  grid-template-columns: 1.7rem minmax(0, 1fr);
+}
+
+/* ---------- a cena (comum às aulas 5, 10 e 11) ---------- */
+.vr-palco {
+  position: relative;
+  margin: 1rem 0 .4rem;
+}
+
+.vr-cena {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.vr-trilhas path {
+  fill: none;
+  stroke: var(--borda-forte);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vr-fluxos path {
+  fill: none;
+  stroke: var(--vr-azul);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 2 16;
+  opacity: .7;
+  animation: dora-corre 1.4s linear infinite;
+}
+
+.vr-fluxos path.fechado {
+  stroke: var(--intruso);
+  opacity: .35;
+  animation: none;
+}
+
+/* as cores de cada peça */
+.vr-ouro { --c: var(--vr-ouro); }
+.vr-azul { --c: var(--vr-azul); }
+.vr-roxo { --c: var(--vr-roxo); }
+.vr-verde { --c: var(--vr-verde); }
+.vr-laranja { --c: var(--vr-laranja); }
+
+.vr-no > rect {
+  fill: var(--c);
+  fill-opacity: .12;
+  stroke: var(--c);
+  stroke-width: 2;
+  transition: fill-opacity .4s;
+}
+
+.vr-no text {
+  text-anchor: middle;
+}
+
+.vr-emoji {
+  font-size: 30px;
+  dominant-baseline: central;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.vr-nome {
+  font-family: var(--f-titulo);
+  font-size: 16px;
+  font-weight: 800;
+  fill: var(--texto);
+}
+
+.vr-vida {
+  font-family: var(--f-texto);
+  font-size: 12.5px;
+  font-style: italic;
+  fill: var(--texto-2);
+}
+
+/* a peça brilha quando a carta chega */
+.vr-no.pisca > rect {
+  animation: vr-brilha .9s var(--suave);
+}
+
+@keyframes vr-brilha {
+  40% {
+    fill-opacity: .4;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 10px var(--c));
+  }
+}
+
+/* caixinha com carta: fica mais cheia e o ícone pula */
+.vr-no.cheia > rect {
+  fill-opacity: .26;
+}
+
+.vr-no.cheia.pisca .vr-emoji {
+  animation: vr-pula .7s var(--suave);
+}
+
+@keyframes vr-pula {
+  50% {
+    transform: translateY(-8px) scale(1.25);
+  }
+}
+
+/* a fila do Postfix: uma pílula que pulsa quando tem carta esperando */
+.vr-fila rect {
+  fill: var(--superficie-2);
+  stroke: var(--vr-ouro);
+  stroke-width: 1.5;
+}
+
+.vr-fila text {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  fill: var(--texto-2);
+}
+
+.vr-fila.tem rect {
+  fill: var(--vr-ouro);
+  animation: vr-espera 1.2s ease-in-out infinite;
+}
+
+.vr-fila.tem text {
+  fill: var(--chip);
+  font-weight: 700;
+}
+
+@keyframes vr-espera {
+  50% {
+    filter: drop-shadow(0 0 6px var(--vr-ouro));
+  }
+}
+
+/* carimbos: DEVOLVIDO aparece na gerente; FECHADO fica no fornecedor */
+.vr-carimbo {
+  font-family: var(--f-titulo);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  fill: none;
+  stroke: var(--intruso);
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-12deg);
+}
+
+.vr-carimbo.carimba {
+  animation: vr-carimba 2.4s var(--suave);
+}
+
+@keyframes vr-carimba {
+  0% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(2.2);
+  }
+
+  15%,
+  80% {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(1);
+  }
+}
+
+.vr-no.fechado > rect {
+  fill: var(--texto-3);
+  fill-opacity: .1;
+  stroke: var(--texto-3);
+  stroke-dasharray: 6 5;
+}
+
+.vr-no.fechado .vr-emoji {
+  opacity: .45;
+}
+
+/* carimbo que fica (FECHADO) e carimbo verde (deu certo) */
+.vr-carimbo.fixo {
+  opacity: .9;
+  fill: var(--superficie);
+  fill-opacity: .7;
+}
+
+.vr-carimbo.bom {
+  stroke: var(--vr-verde);
+}
+
+/* peça desligada (ex.: o roteador doméstico antes de ligar) */
+.vr-no.apagado {
+  opacity: .28;
+}
+
+.vr-fluxos path.apagado {
+  display: none;
+}
+
+.vr-trilhas path.apagado {
+  stroke-dasharray: 5 7;
+  opacity: .5;
+}
+
+/* o balão de fala que voa junto (ex.: "Tem quarto?") */
+.vr-balao rect {
+  fill: var(--superficie);
+  stroke: var(--vr-verde);
+  stroke-width: 2;
+}
+
+.vr-envelope.servidor .vr-balao rect {
+  stroke: var(--vr-azul);
+}
+
+.vr-envelope.erro .vr-balao rect {
+  stroke: var(--intruso);
+}
+
+.vr-balao text {
+  font-family: var(--f-texto);
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: var(--texto);
+  text-anchor: middle;
+}
+
+/* o envelope voando, com um brilho da cor da viagem */
+.vr-envelope circle {
+  fill: var(--vr-verde);
+  opacity: .3;
+  filter: drop-shadow(0 0 8px var(--vr-verde));
+}
+
+.vr-envelope.servidor circle {
+  fill: var(--vr-azul);
+  filter: drop-shadow(0 0 8px var(--vr-azul));
+}
+
+.vr-envelope.erro circle {
+  fill: var(--intruso);
+  filter: drop-shadow(0 0 8px var(--intruso));
+}
+
+.vr-envelope .vr-env {
+  font-size: 22px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* chuva de estrelinhas ao cumprir uma missão */
+.vr-festa {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vr-festa span {
+  position: absolute;
+  left: var(--x);
+  bottom: 10%;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: vr-sobe 1.4s var(--suave) var(--d) forwards;
+}
+
+@keyframes vr-sobe {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-180px) rotate(var(--g));
+  }
+}
+
+/* ---------- botões de quem recebe e das soluções ---------- */
+.detetive-envio {
+  margin-top: .6rem;
+}
+
+.detetive-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.detetive-botoes button {
+  padding: .6rem .95rem;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-p);
+  background: var(--superficie-2);
+  color: var(--texto);
+  font-family: var(--f-mono);
+  font-size: .9rem;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: border-color .2s, transform .2s var(--suave), box-shadow .2s;
+}
+
+.detetive-botoes button:hover {
+  border-color: var(--vr-azul);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vr-azul) 20%, transparent);
+  transform: translateY(-2px);
+}
+
+.detetive[aria-busy="true"] [data-para] {
+  opacity: .55;
+  cursor: wait;
+}
+
+.detetive-solucao .detetive-botoes button {
+  font-family: var(--f-texto);
+}
+
+/* ---------- o log, sempre escuro, com a tradução embaixo de cada linha ---------- */
+.detetive-terminal {
+  margin-top: 1rem;
+}
+
+.detetive-terminal .janela-corpo {
+  padding: 0;
+  background: var(--chip);
+}
+
+.detetive-traduz {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem .9rem 0;
+  font-size: .88rem;
+  color: #ecc874;
+  cursor: pointer;
+}
+
+.detetive-traduz input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #ecc874;
+}
+
+.detetive-log {
+  display: grid;
+  align-content: start;
+  gap: .15rem;
+  height: 18rem;
+  padding: .6rem;
+  overflow-y: auto;
+}
+
+.detetive-vazio {
+  padding: .4rem;
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: #6e7d75;
+}
+
+.detetive-linha {
+  display: grid;
+  gap: .15rem;
+  width: 100%;
+  padding: .3rem .5rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.detetive-linha:hover {
+  background: rgba(255, 255, 255, .05);
+}
+
+.detetive-linha.escolhida {
+  border-left-color: #ecc874;
+  background: rgba(236, 200, 116, .1);
+}
+
+.log-tec {
+  color: #c9c6bc;
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.log-tec b {
+  font-weight: 500;
+}
+
+.detetive-linha.sent .log-tec b {
+  color: #39ff14;
+}
+
+.detetive-linha.deferred .log-tec b {
+  color: #ecc874;
+}
+
+.detetive-linha.bounced .log-tec b {
+  color: #ff8a5c;
+}
+
+/* a tradução: o rastreamento da encomenda */
+.log-vida {
+  display: none;
+  color: #ecc874;
+  font-family: var(--f-texto);
+  font-size: .9rem;
+}
+
+.com-traducao .log-vida {
+  display: block;
+}
+
+.detetive-linha.bounced .log-vida {
+  color: #ff8a5c;
+}
+
+.detetive-linha.sent .log-vida {
+  color: #7dff5c;
+}
+
+.detetive-linha.chega {
+  animation: detetive-acende 1.2s;
+}
+
+@keyframes detetive-acende {
+  0% {
+    background: rgba(236, 200, 116, .25);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+/* ---------- a explicação: no servidor e na vida real, lado a lado ---------- */
+.detetive-explica {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem;
+  margin-top: .9rem;
+  color: var(--texto-2);
+}
+
+.detetive-explica > p {
+  grid-column: 1 / -1;
+  padding: .9rem 1rem;
+  border: 1px dashed var(--borda-forte);
+  border-radius: var(--raio-p);
+}
+
+.explica-lado {
+  padding: .9rem 1rem;
+  border: 1px solid var(--borda);
+  border-top: 4px solid var(--vr-azul);
+  border-radius: var(--raio-p);
+  background: var(--fundo-2);
+}
+
+.explica-lado.explica-vida {
+  border-top-color: var(--vr-ouro);
+}
+
+.explica-lado h4 {
+  margin: 0 0 .4rem;
+  font-size: 1rem;
+  color: var(--texto);
+}
+
+.explica-lado p + p {
+  margin-top: .4rem;
+}
+
+.explica-lado b {
+  color: var(--texto);
+}
+
+.detetive-solucao {
+  margin-top: 1rem;
+}
+
+.detetive-solucao[hidden],
+.detetive [data-detetive-ligar][hidden] {
+  display: none;
+}
+
+.detetive-solucao h4 {
+  margin: 0 0 .5rem;
+  font-size: 1.05rem;
+}
+
+.detetive-retorno code {
+  font-family: var(--f-mono);
+  font-size: .9em;
+  color: var(--ouro-forte);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .detetive-explica {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .detetive-log {
+    height: 16rem;
+  }
+}
+
+/* com as animações pausadas, o carimbo aparece parado */
+.pausado .vr-carimbo.carimba {
+  opacity: 1;
+}

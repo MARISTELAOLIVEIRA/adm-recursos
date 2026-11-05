@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=2">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=7">
 </head>
 <body>
 
@@ -138,6 +139,69 @@
               <p>Criar, alterar e apagar, sempre com <code>sudo</code>.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span>sudo groupadd financeiro</span><span class="linha"><span class="num">2</span>sudo useradd -m -G financeiro ana</span><span class="linha"><span class="num">3</span>sudo passwd ana</span><span class="linha"><span class="num">4</span>sudo usermod -aG vendas ana</span><span class="linha"><span class="num">5</span>id ana</span><span class="linha"><span class="num">6</span>sudo userdel -r estagiario2025</span></code></pre>
+          </div>
+          <!-- terminal das contas (assets/js/interativos.js): o aluno digita os comandos e vê o Linux mudar -->
+          <div class="cartao contas" data-contas>
+            <div class="contas-topo">
+              <span class="olho">Simulador · terminal</span>
+              <h3>Usuários são crachás. Grupos são salas.</h3>
+              <p>Um Linux de mentirinha, só com os comandos desta aula. Pense no prédio da Ponto Certo: cada <strong>usuário</strong> tem um crachá, cada <strong>grupo</strong> é uma sala que o crachá abre, e cada pasta em <strong>/home</strong> é um armário pessoal. O <strong>sudo</strong> é a chave mestra. Digite no terminal e veja o prédio mudar. Errar aqui não quebra nada.</p>
+            </div>
+
+            <ol class="contas-missoes" aria-label="Missões">
+              <li data-comando="sudo groupadd caixa · sudo groupadd estoque · sudo groupadd escritorio"><span>Crie os grupos dos setores: <strong>caixa</strong>, <strong>estoque</strong> e <strong>escritorio</strong> (sem acento: o Linux não aceita).<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+              <li data-comando="sudo useradd -m -G caixa ana"><span>A <strong>ana</strong> entrou no caixa: crie a conta dela, com pasta pessoal.<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+              <li data-comando="sudo passwd ana"><span>Dê uma senha para a ana.<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+              <li data-comando="sudo usermod -aG estoque ana"><span>A ana também vai ajudar no <strong>estoque</strong>, sem sair do caixa.<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+              <li data-comando="id ana"><span>Confira os números e os grupos da ana.<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+              <li data-comando="sudo userdel -r estagiario"><span>O <strong>estagiário</strong> saiu: apague a conta e a pasta dele.<code class="dica-cmd" hidden></code></span><button type="button">Mostrar o comando</button></li>
+            </ol>
+
+            <div class="contas-palco">
+              <div class="janela contas-terminal">
+                <div class="janela-barra">
+                  <span class="semaforo" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="janela-titulo">stela@ponto-certo: ~</span>
+                </div>
+                <div class="janela-corpo">
+                  <div class="contas-saida" role="log" aria-live="polite" aria-label="Saída do terminal"></div>
+                  <div class="contas-linha">
+                    <label class="ps" for="contas-comando"><span class="ps-longo">stela@ponto-certo:</span>~$</label>
+                    <input id="contas-comando" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="digite um comando e aperte Enter">
+                  </div>
+                </div>
+              </div>
+
+              <div class="contas-quadro" aria-label="O prédio agora: crachás, salas e armários">
+                <div>
+                  <h4>🪪 Crachás <small>(usuários)</small></h4>
+                  <div class="contas-fichas" data-usuarios></div>
+                </div>
+                <div>
+                  <h4>🚪 Salas <small>(grupos)</small></h4>
+                  <div class="contas-grupos" data-grupos></div>
+                </div>
+                <div>
+                  <h4>🗄️ Armários <small>(pastas em /home)</small></h4>
+                  <div class="contas-fichas" data-pastas></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contas-arquivos">
+              <div class="contas-abas" role="group" aria-label="Arquivo mostrado">
+                <button type="button" data-arquivo="/etc/passwd" aria-pressed="true">📋 /etc/passwd</button>
+                <button type="button" data-arquivo="/etc/group" aria-pressed="false">🚪 /etc/group</button>
+                <button type="button" data-arquivo="/etc/shadow" aria-pressed="false">🔐 /etc/shadow</button>
+              </div>
+              <pre class="codigo contas-arquivo"><code></code></pre>
+              <p class="contas-legenda">Linha nova ou mudada acende em verde. No /etc/shadow, <code>!</code> quer dizer "sem senha ainda".</p>
+            </div>
+
+            <div class="contas-rodape">
+              <p class="contas-placar" aria-live="polite">0 de 6 missões</p>
+              <button type="button" class="botao contorno" data-contas-recomecar>Recomeçar o servidor</button>
+            </div>
           </div>
         </section>
 
@@ -273,5 +337,6 @@
   <script src="../assets/js/conta.js?v=5" data-disciplina="adm-recursos"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=7"></script>
 </body>
 </html>
