@@ -163,8 +163,9 @@ stela@arc:~$ sudo netplan try
 
 | 1º bimestre (10 pontos) | | 2º bimestre (10 pontos) | |
 |---|:-:|---|:-:|
-| Prova objetiva | 6,0 | Apresentação do projeto final | 7,0 |
-| Atividade avaliativa prática | 4,0 | Avaliação Integrada | 2,0 |
+| Prova objetiva | 6,0 | Apresentação do projeto final | 6,0 |
+| Atividade avaliativa prática | 4,0 | Lista de exercícios (aula 14) | 1,0 |
+| | | Avaliação Integrada | 2,0 |
 | | | Participação na Jornada Interdisciplinar | 1,0 |
 
 Para ser aprovado: **média final 6,0** e pelo menos **75% de frequência**.
