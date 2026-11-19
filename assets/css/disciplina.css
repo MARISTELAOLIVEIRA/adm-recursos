@@ -668,6 +668,10 @@ a.unidade:hover {
   background: var(--texto-3);
 }
 
+.pontos span:nth-child(4) {
+  background: var(--neon);
+}
+
 .partes {
   margin: 0;
   padding: 0;
